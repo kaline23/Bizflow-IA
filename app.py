@@ -6,15 +6,28 @@ import pandas as pd
 st.set_page_config(page_title="BizFlow AI - Painel Principal", layout="wide")
 
 # 2. ESTILO VISUAL DA PÁGINA PRINCIPAL (FORÇA LETRAS PRETAS E BANNER AZUL)
+# ASSIM DEVE FICAR O SEU BLOCO DE ESTILO NO INÍCIO DO app.py:
 st.markdown("""
     <style>
-        /* Força todas as letras do menu esquerdo a ficarem grandes e puramente PRETAS */
+        /* TRUQUE: Esconde o nome 'app' original e escreve 'Painel Principal' no lugar */
+        [data-testid="stSidebarNavItems"] li:first-child span {
+            font-size: 0 !important;
+        }
+        [data-testid="stSidebarNavItems"] li:first-child span::after {
+            content: "🏠 Painel Principal" !important;
+            font-size: 18px !important;
+            font-weight: 600 !important;
+            color: #000000 !important;
+        }
+
+        /* Garante que todas as outras opções fiquem grandes e pretas */
         [data-testid="stSidebarNavItems"] span {
             font-size: 18px !important;
             font-weight: 600 !important;
             color: #000000 !important;
         }
-        /* Banner de destaque no topo */
+        
+        /* Banner do cabeçalho */
         .header-box {
             background-color: #0A2540;
             padding: 20px;
